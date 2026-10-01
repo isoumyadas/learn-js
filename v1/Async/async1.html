@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async 1</title>
+  </head>
+  <body style="background-color: black; color: white">
+    <h1>ASYNC One....</h1>
+    <button id="stop">START</button>
+    <button id="stop">STOP</button>
+  </body>
+  <script>
+    // SetInterval : setInterval mean, give me a amount of time that i will execute it again and again
+    setInterval(function () {
+      console.log("Hitesh", Date.now());
+    }, 1000);
+
+    const date = function (str) {
+      console.log(str, Date.now());
+    };
+
+    const close = setInterval(date, 3000, "hi"); // we can also pass the third argument for a params
+
+    // we also have clearInterval
+    clearInterval(close);
+  </script>
+</html>

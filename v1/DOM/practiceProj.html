@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice Odin Proj</title>
+  </head>
+  <body>
+    <h1>ODIN PROJECT</h1>
+    <div id="container"></div>
+    <div id="contianer2"></div>
+    <!-- <h2>D</h2>
+    <h2>E</h2>
+    <h2>N</h2> -->
+  </body>
+  <script>
+    const containerId = document.querySelector("#container");
+
+    // adding elements
+    const pTag = document.createElement("p");
+    const hTag = document.createElement("h3");
+    const divElement = document.createElement("div");
+    const h1Tag = document.createElement("h1");
+    const underPTag = document.createElement("p");
+
+    pTag.textContent = `Hey I’m red!`;
+    hTag.textContent = `I’m a blue h3!`;
+    h1Tag.textContent = "Im in DIV";
+    underPTag.textContent = "Im too!";
+
+    // styling Elements
+    pTag.setAttribute("style", "color : red");
+    hTag.setAttribute("style", "color : blue");
+    divElement.setAttribute("style", "border: 3px solid black");
+    divElement.style.backgroundColor = "pink";
+
+    divElement.append(h1Tag, underPTag);
+
+    // document.body.append(pTag, hTag);
+    containerId.append(pTag, hTag, divElement); // while using appendChild it only appends on document which is pTag (firstElement)
+    // but using [ append it appends both "Elements", Another method is document.body.append()]
+    // document.body.append(pTag, hTag);
+
+    const h2Tag = document.querySelectorAll("h2");
+    h2Tag.forEach((h2) => {
+      h2.style.color = "green";
+    });
+
+    const p2Tag = document.createElement("p");
+    const h3Tag = document.createElement("h3");
+    const createDiv = document.createElement("div");
+    const hq1Tag = document.createElement("h1");
+    const p1Tag = document.createElement("p");
+
+    //styling
+
+    p2Tag.style.color = "red";
+    h3Tag.style.color = "blue";
+    hq1Tag.style.color = "black";
+    p1Tag.style.color = "blue";
+    createDiv.style.backgroundColor = "pink";
+    createDiv.style.border = "3px solid red";
+
+    // text
+
+    p2Tag.textContent = "Hey I'm Red :}";
+    h3Tag.textContent = "Hey I'm h3";
+    hq1Tag.textContent = "h1Tag, I'm in Div";
+    p1Tag.textContent = "ok i'm too";
+
+    const container2 = document.querySelector("#contianer2");
+    createDiv.append(hq1Tag, p1Tag);
+    container2.append(createDiv, p2Tag, h3Tag);
+  </script>
+</html>

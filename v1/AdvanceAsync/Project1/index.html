@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POST from Data with Fetch API in Javascript</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="text" name="username" placeholder="username" />
+      <input type="password" name="password" placeholder="password" />
+      <input type="checkbox" name="termscondition" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+  <script>
+    const formEl = document.querySelector("#form");
+
+    formEl.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const fromData = new FormData(formEl);
+      console.log("fromData", fromData);
+      const data = new URLSearchParams(fromData);
+      console.log("data", data);
+
+      fetch("https://jsonplaceholder.typicode.com/users", {
+        method: "POST",
+        headers: {
+          // "Content-Type": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded", // mostly used in Form
+          // 'Content-Type' : 'multipart/form-data' // moslty used for binary data or large data like image etc
+        },
+        body: data,
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    });
+  </script>
+</html>

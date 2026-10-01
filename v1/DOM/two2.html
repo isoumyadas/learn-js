@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 2 ka 2</title>
+  </head>
+  <body style="background-color: black; color: white"></body>
+  <script>
+    const createDiv = document.createElement("div");
+    console.log(createDiv);
+    createDiv.className = "main";
+    // div.id = 'my-Id'
+    createDiv.id = Math.random();
+
+    // for setting the title
+    createDiv.setAttribute("title", "h0la amigo's");
+    createDiv.style.backgroundColor = "#FDA403";
+    createDiv.style.padding = "2rem";
+    // createDiv.innerText = "Soumya"
+    const createdDivText = document.createTextNode("Soummy.a");
+    createDiv.appendChild(createdDivText);
+
+    document.body.appendChild(createDiv);
+
+    // task is to create a function and store these all to create a new div
+    // and create a loop to loop 5 div at a time with different colors and text
+  </script>
+</html>

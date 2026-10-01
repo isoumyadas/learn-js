@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Api Request</title>
+    <style>
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        height: 500px;
+        width: 500px;
+      }
+
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .container {
+        padding: 2px 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <!-- <img src="" alt="Avatar" style="width: 100%" /> -->
+      <div class="container">
+        <h4><b>John Doe</b></h4>
+        <p>Architect & Engineer</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    // Note: Whenver data comes from response, it always comes in STRING. most of the time. but in some secnarios it comes in OBJECT too.
+    const requestUrl = "https://api.github.com/users/hiteshchoudhary";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", requestUrl); // This take two parameter 1. Method(GET,POST,PUT) 2.String(URL)
+    let data;
+    xhr.onreadystatechange = function () {
+      // onreadystatechange = Tracks everytime when state changes (1,2,3,4)
+      console.log(xhr.readyState); // readyState = Gives on what current state, we are currently.
+      if (xhr.readyState === 4) {
+        // This tells when redayState is equal to 4 then run this condition.
+        data = JSON.parse(this.responseText);
+        console.log(data.followers);
+        console.log(data.avatar_url);
+
+        // Project:
+        // Getting Elements
+        const card = document.querySelector(".card");
+        if (card) {
+          const profileElement = document.createElement("img");
+          profileElement.src = data.avatar_url;
+          profileElement.setAttribute("width", "400px");
+          profileElement.setAttribute("height", "400px");
+
+          const userName = document.querySelector("h4");
+          userName.textContent = data.name;
+
+          const followers = document.querySelector("p");
+          followers.textContent = data.followers;
+
+          card.append(profileElement, userName, followers);
+        } else {
+          throw new Error();
+        }
+      }
+    };
+    xhr.send();
+  </script>
+</html>

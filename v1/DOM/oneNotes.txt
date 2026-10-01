@@ -1,0 +1,97 @@
+console.dir(docuemnt) // this will give you the hidden methods
+console.log(document) || console.log(window.document) // both of the syntax works same.
+
+// for selecting the Element By ID
+document.getElementById('firstHeading');
+
+// You can do Manipulation by doing this
+document.getElementById('firstHeading').innerHTML = "SOUMYA" // this will change the current value with SOUMYA.
+
+//To identify the name of ID assigned to particular 
+docuemnt.getElementById('title').id // this will give us title
+
+// same we can do with 
+1. class
+2. className
+3. 
+
+//Here we can also getAttribute() to acces the getAttribute
+docuemnt.getElementById('title').getAttribute('id') // here you've to pass an attribute class,id (you've to pass key it will give you value)
+
+// You can also set an attribute
+docuemnt.getElementById('title').setAttribute('class', 'test') // here this will overwrite the current class name to test so if you want to don't write then wirte the pervious class name and current one together
+docuemnt.getElementById('title').setAttribute('class', 'test heading') // like this
+
+// we can add the style to an attribute, if we save the method in a variable
+
+const title = docuemnt.getElementById('title')
+title.style.backgroundColor = 'green' // we should never do this!
+
+// you can also pass
+1. padding
+2. borderRadius
+
+
+// We can also change the content............
+
+title.innerHTML [will show you the HTML (html tags that are present in id title, like span), content of the id title] 
+=> Output [ Hello DOM <span style="display: none">Hey there!</span> ]
+
+title.innerText [will show only text content that is visible]
+=> Output [ 'Hello DOM' ]
+
+title.textContent [will show all the text content, that are also hidden by some sytling]
+=> Output [ Hello DOM Hey there! ]
+
+// Query Selector
+
+document.querySelector('h2') // This will only give the first h2 content!
+docuemnt.querySelector('#title') // this will give us id title
+docuemnt.querySelector('.heading') // this will give us class heading
+
+note: we can give any selector for accessing the content
+// we can do like this too
+const selector = docuemnt.querySelector('ul') // this will select and give you the value of ul
+selector.querySelector('li')
+const myList = selector.querySelector('li') // this will select and give you the value of li
+
+// now you can perform any sort of styling or anything on this myList as we have selected this with selector
+for ex: myList.innerText('five') // this will change the value to five 
+
+// For multiple values
+docuemnt.querySelectorAll()
+
+NOTE: nodeList and HTMlcollection are not pure array
+
+querySelectorAll always returns nodeList but to access it's content you need to do :
+const tempList = docuemnt.querySelectorAll(h2) // 1. This will select all the h2 tags
+tempList.style.color = 'red' // 2. this will not work for that you've to sepcify which content, as this is like an array so you can pass :
+tempList[0].style.color = 'red' // 3. while doing this you can access the first value of the nodeList or h2 tag
+
+- But if you want to change every h2 into color red then you'll use forEach (as this is array so it will act like an array.)
+// with help of forEach you can loop through every value and change it's color or anything
+select.forEach((h2) => {
+    h2.style.backgroundColor = 'yellow'
+})
+
+select.forEach((h2) => {
+    h2.style.backgroundColor = 'yellow'
+    h2.style.color = 'red'
+})
+
+// NOTE: Everytime use forEach when there is nodeList.
+
+// getElementByClassName // This always give HTMlcollection so when it comes you always use Array.from() to convert into an array
+
+docuemnt.getElementByClassName('list-item')
+// store this value in variable
+const store = docuemnt.getElementByClassName('list-item')
+
+// store below value also in variable
+const storedValue = Array.from(store) // this will give all the array methods to do operations
+
+// final input you need to do...
+storedValue.forEach((h)=> {
+    h.style.backgroundColor = "Green" // this will bg color to green of all class 'list-item'
+})
+

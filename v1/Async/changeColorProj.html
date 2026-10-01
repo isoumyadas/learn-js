@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Color Changing</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <h1>Random Bg color after every 1Sec</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    // Generating Random Colors
+
+    const randomColors = () => {
+      const hex = "01234567879ABCDEF";
+      let colors = "#";
+      for (i = 0; i < 6; i++) {
+        colors += hex[Math.floor(Math.random() * 16)];
+      }
+      return colors;
+    };
+
+    // Global scope
+    let intervalId;
+
+    const startChangingColor = () => {
+      let changeBgColor = () => {
+        document.body.style.backgroundColor = randomColors();
+      };
+
+      if (!intervalId) {
+        // this checks if intervalId is null or not if null then change the bgColor!
+        intervalId = setInterval(changeBgColor, 1000);
+      }
+    };
+
+    const stopChangingColor = () => {
+      clearInterval(intervalId);
+      intervalId = null; // For better practice to set as Null after clearing this will free up some memory space
+    };
+
+    document
+      .querySelector("#start")
+      .addEventListener("click", startChangingColor);
+    document
+      .querySelector("#stop")
+      .addEventListener("click", stopChangingColor);
+  </script>
+</html>
