@@ -1,4 +1,4 @@
-An Introduction to JS
+# An Introduction to JS
 
 - The programs in JS are called SCRIPTS
 
